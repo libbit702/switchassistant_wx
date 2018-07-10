@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/game/game",
+    "pages/onsale/onsale",
+    "pages/preorder/preorder",
+    "pages/coming/coming",
+    "pages/detail/detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "switch游戏价格助手",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#db0012",
+    "list": [
+      {
+        "pagePath": "pages/game/game",
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home-on.png"
+      },
+      {
+        "pagePath": "pages/onsale/onsale",
+        "text": "促销",
+        "iconPath": "icons/clock.png",
+        "selectedIconPath": "icons/clock-on.png"
+      },
+      {
+        "pagePath": "pages/preorder/preorder",
+        "text": "预售",
+        "iconPath": "icons/cart.png",
+        "selectedIconPath": "icons/cart-on.png"
+      },
+      {
+        "pagePath": "pages/coming/coming",
+        "text": "即将发售",
+        "iconPath": "icons/calendar.png",
+        "selectedIconPath": "icons/calendar-on.png"
+      }
+    ]
+  }
+}

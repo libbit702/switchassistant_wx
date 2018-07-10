@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="page__bd ">
+  <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜索游戏" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+              </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">输入游戏名称</view>
+          </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+</view>
+
+<view class="page__bd" wx:if="{{inputVal.length>0}}">
+  <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">为您找到{{searchs.length}}个结果</view>
+      <view class="weui-panel__bd">
+          <navigator url="../detail/detail?id={{item._id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{searchs}}" wx:key="link">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                  <image class="weui-media-box__thumb" src="{{item.logo}}" mode="aspectFill" />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">{{item.title_final}}</view>
+                  <view class="weui-media-box__desc" wx:if="{{item.title_original.length>0}}">{{item.title_original}}</view>
+                  <view class="weui-media-box__desc"><image align="bottom" src="{{item.lowest_price.img}}" class="icon-image"/><span>{{item.price}}</span> </view>
+              </view>
+          </navigator>
+      </view>
+  </view>
+</view>
+<scroll-view class='scroll-view' scroll-y="true" bindscrolltolower="searchScrollLower" wx:else="{{inputVal.length==0}}"> 
+<view class="page__bd">
+  <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">游戏列表</view>
+      
+      <view class="weui-panel__bd">
+          <navigator url="../detail/detail?id={{item._id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{games}}" wx:key="link">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                  <image class="weui-media-box__thumb" src="{{item.logo}}" mode="aspectFill" /> 
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">{{item.title_final}}</view>
+                  <view class="weui-media-box__desc" wx:if="{{item.title_original.length>0}}">{{item.title_original}}</view>
+                  <view class="weui-media-box__desc" wx-if="{{!!item.lowest_price}}"><image align="bottom" src="{{item.lowest_price.img}}" class="icon-image"/><span>{{item.price}}</span></view>
+              </view>
+          </navigator>
+      </view>
+      <view class="page__bd">
+        <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+      </view>
+      
+  </view>
+</view>
+</scroll-view>
+

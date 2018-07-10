@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<scroll-view class='scroll-view' scroll-y="true" bindscrolltolower="searchScrollLower"> 
+<view class="page__bd">
+  <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+          <navigator url="../detail/detail?name={{item.title}}&id={{item._id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{test}}" wx:key="link">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                  <image class="weui-media-box__thumb" src="{{item.logo}}" mode="aspectFill" />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">{{item.title}}</view>
+                  <view class="weui-media-box__desc" ><image align="bottom" src="{{item.lowest_price.img}}" class="icon-image"/><span>{{item.price}}</span> </view>
+                  
+              </view>
+          </navigator>
+      </view>
+      <view class="page__bd">
+        <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+      </view>
+      
+  </view>
+</view>
+</scroll-view>
+

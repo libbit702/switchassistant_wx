@@ -1,0 +1,42 @@
+<!--detail.wxml-->
+<view class="games-show">
+	<view class="hero game-hero">
+		<view class="hero-background" style="background-image: url({{game.logo}})"></view>
+		<view class="wrapper">
+			<image class="game-hero-image" src="{{game.logo}}"/>
+			<view style="padding:10px 20px;">
+				<view class="title">{{game.cn_title?game.cn_title:game.title}}</view>
+				<view class="desc">{{game.desc}}</view>
+				<view class="release">{{game.release_date}}</view>
+        <view class="release" wx:if="{{!!game.prices&&game.prices.length==0}}">暂无价格信息</view>
+			</view>
+		</view>
+	</view>
+
+  
+	<view class="wrapper" wx:if="{{!!game.prices&&game.prices.length>0}}">
+		<view class="well ">
+			<view class="table">
+        <view class="tr">
+          <view class="th price-position"></view>
+          <view class="th price-country">地区</view>
+          <view class="th price-meta"></view>
+          <view class="th price-value">售价</view>
+        </view>
+
+          <view class="tr" wx:for="{{game.prices}}" wx:key="country">
+            <view class="td price-position">
+              <image src="https://twemoji.maxcdn.com/2/svg/1f947.svg" wx-if="{{index==0}}"/>
+              <image src="https://twemoji.maxcdn.com/2/svg/1f948.svg" wx-if="{{index==1}}"/>
+              <image   src="https://twemoji.maxcdn.com/2/svg/1f949.svg" wx-if="{{index==2}}"/>
+            </view>
+            <view class="td price-country">
+              <image title="{{item.country}}" src="{{item.img}}" /> {{!!item.cn_title ? item.cn_title : item.country}}
+            </view>
+            <view class="td price-meta"></view>
+            <view class="td price-value">{{item.price}}</view>
+          </view>
+      </view>
+		</view>
+	</view>
+</view>
